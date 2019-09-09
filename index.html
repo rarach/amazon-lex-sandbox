@@ -10,12 +10,12 @@
 <body class="wrapper">
     <div class="audio-control">
         <p id="audio-control" class="white-circle">
-            <img src="lex.png">
+            <img src="microphone.png">
             <canvas class="visualizer"></canvas>
         </p>
         <p><span id="message"></span></p>
         <p>
-            <input type="password" id="ACCESS_ID" name="ACCESS ID" placeholder="ACCESS ID" value=""/>
+            <input type="text" id="ACCESS_ID" name="ACCESS ID" placeholder="ACCESS ID" value=""/>
         </p>
         <p>
             <input type="password" id="SECRET_KEY" name="SECRET KEY" placeholder="SECRET KEY" value=""/>
@@ -25,19 +25,14 @@
         </p>
     </div>
 
-    <script src="./script/lib/aws-sdk-2.48.0.min.js"></script>
-    <script src="./script/lib/control.js" type="text/javascript"></script>
-    <script src="./script/lib/conversation.js" type="text/javascript"></script>
-    <script src="./script/lib/lex-audio.js" type="text/javascript"></script>
-    <script src="./script/lib/recorder.js" type="text/javascript"></script>
-    <script src="./script/lib/worker.js" type="text/javascript"></script>
+    <script src="./dist/bundle.js" type="text/javascript"></script>
     <script src="./script/renderer.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         var waveform = window.Waveform();
         var message = document.getElementById('message');
         var config, conversation;
-        message.textContent = 'Passive';
+        message.textContent = 'Click the microphone and say something';
         document.getElementById('audio-control').onclick = function () {
             AWS.config.credentials = new AWS.Credentials(document.getElementById('ACCESS_ID').value, document.getElementById('SECRET_KEY').value, null);
             AWS.config.region = 'us-east-1';
@@ -46,7 +41,12 @@
                 lexConfig: { botName: document.getElementById('BOT').value }
             };
             conversation = new LexAudio.conversation(config, function (state) {
-                message.textContent = state + '...';
+                if (state === "Passive") {
+                    message.textContent = "Click the microphone and say something";
+                }
+                else {
+                    message.textContent = state + '...';
+                }
                 if (state === 'Listening') {
                     waveform.prepCanvas();
                 }

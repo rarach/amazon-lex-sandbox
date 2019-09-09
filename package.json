@@ -1,0 +1,37 @@
+{
+  "name": "amazon-lex-sandbox",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">= 10.15.0"
+  },
+  "devDependencies": {
+    "coffeeify": "1.0.0",
+    "coffeescript": "~1.9.1",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "~3.5.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-contrib-watch": "*",
+    "grunt-mocha": "~1.2.0",
+    "grunt-mocha-test": "~0.13.3",
+    "mocha-cobertura-reporter": "~1.0.4",
+    "semver": "*",
+    "webworkify": "^1.5.0",
+    "xml2js": "0.2.6"
+  },
+  "dependencies": {
+    "aws-sdk": ">=2.48.0",
+    "phantomjs-prebuilt": "^2.1.1"
+  },
+  "main": "lib/lex-audio.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "grunt test",
+    "unit": "grunt test",
+    "distribution": "grunt dist"
+  }
+}
