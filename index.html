@@ -15,13 +15,13 @@
         </p>
         <p><span id="message"></span></p>
         <p>
-            <input type="text" id="ACCESS_ID" name="ACCESS ID" placeholder="ACCESS ID" value=""/>
+            <input type="text" id="ACCESS_ID" name="ACCESS ID" placeholder="ACCESS ID" value="AKIAXSY6IPMWD4XACO4Y"/>
         </p>
         <p>
             <input type="password" id="SECRET_KEY" name="SECRET KEY" placeholder="SECRET KEY" value=""/>
         </p>
         <p>
-            <input type="text" id="BOT" name="BOT" placeholder="BOT" value=""/>
+            <input type="text" id="BOT" name="BOT" placeholder="BOT" value="GeneralTestBot"/>
         </p>
     </div>
 
@@ -35,7 +35,7 @@
         message.textContent = 'Click the microphone and say something';
         document.getElementById('audio-control').onclick = function () {
             AWS.config.credentials = new AWS.Credentials(document.getElementById('ACCESS_ID').value, document.getElementById('SECRET_KEY').value, null);
-            AWS.config.region = 'us-east-1';
+            AWS.config.region = 'us-east-1';    //We defined our bot here
             
             config = {
                 lexConfig: { botName: document.getElementById('BOT').value }
