@@ -20,11 +20,12 @@
 }
 
 .audio-control {
+/*DEL?
     position: fixed;
     top: 50%;
     left: 50%;
     margin-top: -50px;
-    margin-left: -50px;
+    margin-left: -50px; */
     text-align: center;
 }
 
@@ -40,10 +41,28 @@ body {
 canvas {
     height: 200px;
     width: 100vw;
-    margin-top: -50px;
+/*    margin-top: -50px; */
     display: block;
     position: fixed;
-    top: 50%;
+    top: 10px;
     left: 0;
     z-index: -1;
+}
+
+div#transcriptPane {
+    margin-top: 10px;
+    height: 50vh;
+    width: 300px;
+    border: 1px solid darkblue;
+    text-align: left;
+    background-color: white;
+    overflow-y: auto;
+}
+
+div.lexSaid {
+    display: inline-block;
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: pink;
 }

@@ -8,21 +8,28 @@
 </head>
 
 <body class="wrapper">
-    <div class="audio-control">
-        <p id="audio-control" class="white-circle">
-            <img src="microphone.png">
-            <canvas class="visualizer"></canvas>
-        </p>
-        <p><span id="message"></span></p>
-        <p>
-            <input type="text" id="ACCESS_ID" name="ACCESS ID" placeholder="ACCESS ID" value="AKIAXSY6IPMWD4XACO4Y"/>
-        </p>
-        <p>
-            <input type="password" id="SECRET_KEY" name="SECRET KEY" placeholder="SECRET KEY" value=""/>
-        </p>
-        <p>
-            <input type="text" id="BOT" name="BOT" placeholder="BOT" value="GeneralTestBot"/>
-        </p>
+    <div class="row" style="display: flex; flex-direction: row; width: 100%;">
+        <div class="audio-control" style="flex-direction: column;">
+            <p id="audio-control" class="white-circle">
+                <img src="microphone.png">
+                <canvas class="visualizer"></canvas>
+            </p>
+            <p><span id="message"></span></p>
+            <p>
+                <input type="hidden" id="BOT" value="GeneralTestBot"/>
+                <input type="hidden" id="ACCESS_ID" value="AKIAXSY6IPMWD4XACO4Y"/>
+                <!-- TODO: DISABLE THE RESPECTIVE AWS USER WHERE IT'S OVER!! -->
+                <input type="hidden" id="SECRET_KEY" name="SECRET KEY" placeholder="AWS API secret key" value="vz1Ouk1SBoxAr5ms5Nv9xmq00Q0Fs/UdGrPsq7J7"/>
+            </p>
+            Transcript:<br/>
+            <div id="transcriptPane">
+                <div class="lexSaid"><b>LEX</b>: Good morning!</div>
+                <div style="display: flex; justify-content: flex-end; margin-bottom: 1px;">
+                    <div style="display: inline-block; border: 1px solid blue; border-radius: 10px; padding: 5px; background-color: lightblue;"><b>YOU</b>: Hello bot</div>
+                </div>
+                <div class="lexSaid"><b>LEX</b>: The weather today is supposed to be sunny but cold. Don't forget to take a coat!</div>
+            </div>
+        </div>
     </div>
 
     <script src="./dist/bundle.js" type="text/javascript"></script>
@@ -55,6 +62,7 @@
                 }
             }, function (data) {
                 console.log('Transcript: ', data.inputTranscript, ", Response: ", data.message);
+                handleResponse(data);
             }, function (error) {
                 message.textContent = error;
             }, function (timeDomain, bufferLength) {
@@ -62,6 +70,14 @@
             });
             conversation.advanceConversation();
         };
+
+        var handleResponse = function(lexData) {   //TODO: move this somewhere
+            if (lexData.dialogState === "ReadyForFulfillment") {
+                if (lexData.intentName === "CurrentTime") {
+                    alert("Current time is " + new Date());
+                }
+            }
+        }
     </script>
 </body>
     

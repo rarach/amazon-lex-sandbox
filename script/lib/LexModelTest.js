@@ -6,7 +6,7 @@
 
         var cmon = function() {
             //using serviceUser1 here
-            AWS.config.credentials = new AWS.Credentials("AKIAXSY6IPMWD4XACO4Y", "", null);     //TODO: THIS IS BAD, RIGHT?
+            AWS.config.credentials = new AWS.Credentials("AKIAXSY6IPMWD4XACO4Y", "vz1Ouk1SBoxAr5ms5Nv9xmq00Q0Fs/UdGrPsq7J7", null);     //TODO: THIS IS BAD, RIGHT?
             AWS.config.region = 'us-east-1';    //Lex available only here
             var lexModelService = new AWS.LexModelBuildingService();
 
