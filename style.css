@@ -19,13 +19,14 @@
     height: 150px;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 .audio-control {
-/*DEL?
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px; */
+    flex-direction: column;
     text-align: center;
 }
 
@@ -41,7 +42,6 @@ body {
 canvas {
     height: 200px;
     width: 100vw;
-/*    margin-top: -50px; */
     display: block;
     position: fixed;
     top: 10px;
@@ -61,8 +61,23 @@ div#transcriptPane {
 
 div.lexSaid {
     display: inline-block;
+    margin-bottom: 1px;
     border: 1px solid red;
     border-radius: 10px;
     padding: 5px;
     background-color: pink;
+}
+
+div.userSaidLine {
+    display: flex;
+    margin-bottom: 1px;
+    justify-content: flex-end;
+}
+
+span.userSaid {
+    display: inline-block;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: lightblue;
 }
